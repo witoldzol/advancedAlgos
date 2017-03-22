@@ -1,0 +1,470 @@
+{
+	"auto_complete":
+	{
+		"selected_items":
+		[
+			[
+				"in",
+				"inline-block"
+			],
+			[
+				"al",
+				"align-self"
+			],
+			[
+				"texal",
+				"text-align"
+			],
+			[
+				"bottom",
+				"bottom"
+			],
+			[
+				"text-de",
+				"text-decoration-style"
+			],
+			[
+				"sea",
+				"searchChannel"
+			],
+			[
+				"crea",
+				"createDiv"
+			],
+			[
+				"call",
+				"callback"
+			],
+			[
+				"con",
+				"console"
+			],
+			[
+				"che",
+				"checkIfOnline"
+			],
+			[
+				"di",
+				"display"
+			],
+			[
+				"bor",
+				"border-top-right-radius"
+			],
+			[
+				"wid",
+				"width"
+			],
+			[
+				"online",
+				"onlineOffline"
+			],
+			[
+				"on",
+				"onlineOffline"
+			],
+			[
+				"test",
+				"test1"
+			],
+			[
+				"target",
+				"targetDiv"
+			],
+			[
+				"targ",
+				"targetDiv"
+			],
+			[
+				"stream",
+				"stream0"
+			],
+			[
+				"cha",
+				"channeLink"
+			],
+			[
+				"no",
+				"nowrap"
+			],
+			[
+				"inlin",
+				"inline-block"
+			],
+			[
+				"chann",
+				"channelName"
+			],
+			[
+				"ta",
+				"text-align"
+			],
+			[
+				"my",
+				"myValue"
+			],
+			[
+				"do",
+				"double"
+			],
+			[
+				"max-",
+				"max-width"
+			],
+			[
+				"btn-",
+				"btn-lg"
+			],
+			[
+				"btn",
+				"btn-default"
+			],
+			[
+				"word",
+				"word-wrap"
+			]
+		]
+	},
+	"buffers":
+	[
+		{
+			"file": "advancedAlgos.js",
+			"settings":
+			{
+				"buffer_size": 68,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "/Users/eldrad/Desktop/Git/100-days-of-code/log60",
+			"settings":
+			{
+				"buffer_size": 11321,
+				"encoding": "UTF-8",
+				"line_ending": "Unix"
+			}
+		}
+	],
+	"build_system": "",
+	"build_system_choices":
+	[
+	],
+	"build_varint": "",
+	"command_palette":
+	{
+		"height": 87.0,
+		"last_filter": "Package Control: inst",
+		"selected_items":
+		[
+			[
+				"Package Control: inst",
+				"Package Control: Install Package"
+			],
+			[
+				"Package Control: pi",
+				"Package Control: Install Package"
+			],
+			[
+				"Package Control: po",
+				"Package Control: Add Repository"
+			]
+		],
+		"width": 449.0
+	},
+	"console":
+	{
+		"height": 0.0,
+		"history":
+		[
+		]
+	},
+	"distraction_free":
+	{
+		"menu_visible": true,
+		"show_minimap": false,
+		"show_open_files": false,
+		"show_tabs": false,
+		"side_bar_visible": false,
+		"status_bar_visible": false
+	},
+	"file_history":
+	[
+		"/Users/eldrad/Desktop/Git/intermed. algorithms/interAlgo.js",
+		"/Users/eldrad/Desktop/Git/advanced algorithms/advanced_algo.js",
+		"/Users/eldrad/Desktop/Git/100-days-of-code/log90.md",
+		"/Users/eldrad/Desktop/Git/FCC basic alghoritms/FreeCodeCamp_Algorithms.js",
+		"/Users/eldrad/Desktop/Git/FFC intermed. algorithms/interAlgo.js",
+		"/Users/eldrad/Desktop/Git/js_methods.rtf",
+		"/Users/eldrad/Desktop/Git/100-days-of-code/log30",
+		"/Users/eldrad/Desktop/Git/twitchApp/script.js",
+		"/Users/eldrad/Desktop/Git/twitchApp/main.css",
+		"/Users/eldrad/Desktop/Git/twitchApp/index.html",
+		"/Users/eldrad/Desktop/Git/twitchApp/temp.js",
+		"/Users/eldrad/Desktop/Git/100-days-of-code/log.md",
+		"/Users/eldrad/Desktop/Git/100-days-of-code/todo.md",
+		"/Users/eldrad/Desktop/Git/twitchApp/template.html",
+		"/Users/eldrad/Desktop/Git/templates/main.css",
+		"/Users/eldrad/Desktop/Git/100-days-of-code/resources.md",
+		"/Users/eldrad/Desktop/Git/templates/script.js",
+		"/Users/eldrad/Desktop/Git/100-days-of-code/FreeCodeCamp_Algorithms.js",
+		"/Users/eldrad/Desktop/Git/Random_quote/index.jade",
+		"/Users/eldrad/Desktop/Git/Random_quote/index.html",
+		"/Users/eldrad/Desktop/Git/100-days-of-code/JSON_Ajax.md",
+		"/Users/eldrad/Desktop/Git/100-days-of-code/notes-js",
+		"/Users/eldrad/Desktop/Git/100-days-of-code/JSON APIs and Ajax",
+		"/Users/eldrad/Desktop/Git/100-days-of-code/rules.md",
+		"/Users/eldrad/Desktop/Git/100-days-of-code/to do.md",
+		"/Users/eldrad/Desktop/Git/100days/log.md",
+		"/Users/eldrad/Desktop/Git/100days/rules.md",
+		"/Users/eldrad/Desktop/Git/ToDo.md",
+		"/Users/eldrad/Desktop/Git/100-days-of-code/TO DO.md",
+		"/Users/eldrad/Desktop/Git/100days/TO DO",
+		"/Users/eldrad/Desktop/test.html",
+		"/Users/eldrad/Downloads/Ex_Files_Bs3EssT/Exercise Files/Ch03/03_01/bootstrap/index.html",
+		"/Users/eldrad/Downloads/Ex_Files_Bs3EssT/Exercise Files/Ch03/03_01/bootstrap/Styles",
+		"/Users/eldrad/Downloads/Ex_Files_Bs3EssT/Exercise Files/Ch02/02_04/bootstrap/index.html",
+		"/Users/eldrad/Downloads/Ex_Files_Bs3EssT/Exercise Files/Ch02/02_03/bootstrap/index.html",
+		"/Users/eldrad/Downloads/Ex_Files_Bs3EssT/Exercise Files/Ch02/02_02/bootstrap/index.html"
+	],
+	"find":
+	{
+		"height": 23.0
+	},
+	"find_in_files":
+	{
+		"height": 93.0,
+		"where_history":
+		[
+		]
+	},
+	"find_state":
+	{
+		"case_sensitive": false,
+		"find_history":
+		[
+			"Friday",
+			"Wednesday",
+			"Monday",
+			"Sunday",
+			"Saturday",
+			"Friday",
+			"p id=\"na",
+			"html",
+			"?v=10.",
+			"right",
+			"Online",
+			"Offline",
+			"name",
+			"result",
+			"targetdiv",
+			"src=\"'+logo+'\">",
+			"href=",
+			"channeLink+",
+			"<p id",
+			"data",
+			"console.log",
+			"console",
+			"\"#streamFCC\"",
+			"test",
+			"searchChannel",
+			"targetDiv",
+			"test",
+			"offline",
+			"2",
+			"thumbnail",
+			"div id=\"st",
+			"500px",
+			"offset",
+			"col-xs-4",
+			"col-xs",
+			"block",
+			"<p id=\"ho",
+			"blank\"",
+			"<div id=\"s",
+			"<img",
+			"img",
+			"container-",
+			"img",
+			"right",
+			"checkIfOnline",
+			"test22",
+			"targetDiv",
+			"var",
+			"Offline",
+			"checkIfOnline",
+			"i",
+			"channeLink",
+			".streamContainer",
+			"#streamContainer",
+			"streamContainer",
+			"4rbydljvsruh725vzyflpl3dpurhpa",
+			"stream0",
+			"stream",
+			"https://codepen.io/Witold/pen/oBzvWB",
+			"col",
+			"md",
+			"6",
+			"section"
+		],
+		"highlight": true,
+		"in_selection": false,
+		"preserve_case": false,
+		"regex": false,
+		"replace_history":
+		[
+			"div"
+		],
+		"reverse": false,
+		"show_context": true,
+		"use_buffer2": true,
+		"whole_word": false,
+		"wrap": true
+	},
+	"groups":
+	[
+		{
+			"selected": 1,
+			"sheets":
+			[
+				{
+					"buffer": 0,
+					"file": "advancedAlgos.js",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 68,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								68,
+								68
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/JavaScript/JavaScript.sublime-syntax"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 1,
+					"type": "text"
+				},
+				{
+					"buffer": 1,
+					"file": "/Users/eldrad/Desktop/Git/100-days-of-code/log60",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 11321,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								8978,
+								8978
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Markdown/Markdown.sublime-syntax"
+						},
+						"translation.x": 0.0,
+						"translation.y": 2203.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 0,
+					"type": "text"
+				}
+			]
+		}
+	],
+	"incremental_find":
+	{
+		"height": 23.0
+	},
+	"input":
+	{
+		"height": 31.0
+	},
+	"layout":
+	{
+		"cells":
+		[
+			[
+				0,
+				0,
+				1,
+				1
+			]
+		],
+		"cols":
+		[
+			0.0,
+			1.0
+		],
+		"rows":
+		[
+			0.0,
+			1.0
+		]
+	},
+	"menu_visible": true,
+	"output.find_results":
+	{
+		"height": 0.0
+	},
+	"pinned_build_system": "",
+	"project": "untitled.sublime-project",
+	"replace":
+	{
+		"height": 42.0
+	},
+	"save_all_on_build": true,
+	"select_file":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"select_project":
+	{
+		"height": 500.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 380.0
+	},
+	"select_symbol":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"selected_group": 0,
+	"settings":
+	{
+	},
+	"show_minimap": true,
+	"show_open_files": true,
+	"show_tabs": true,
+	"side_bar_visible": true,
+	"side_bar_width": 179.0,
+	"status_bar_visible": true,
+	"template_settings":
+	{
+	}
+}
