@@ -129,13 +129,14 @@ updateRecords(5439, "tracks", "Take a Chance on Me");
 
 // -------------------  3 ----- return array that conforms to 'SYMETRIC DIFFERENCE' rule (its a tricky one!)
 
-
+ 
+ 
 function sym(args) {
-  
+ 
   //create array with all arguments
   //we use spread operator (...)
   var arg = [...arguments];
-  
+ 
   //remove duplicate from individual arrays
   //function written by Niccolò Campolungo on StackOverflow
   arg.filter(function(elem, index, self) {
@@ -143,33 +144,25 @@ function sym(args) {
   });
   //lets create holding array
   var arr =[];
-  
+ 
+  //now lets push argument arrays into holding array
   //outer loop (goes through nested arrays)
   for(i=0; i<arg.length; i++){
-      
+     
    arr.push(arg[i].filter(function(elem, index, self) {
     return index == self.indexOf(elem);
     }));
-    
+   
   }
-  
-  arr.reduce(function(x,y){
-    
-    return symDif(x.concat(y));
-    
-   
-   
-    
-    
-  });
+ 
   
   
-  
+  //function that passes the concatenated through objects, removes duplicates, and puts result back into array
   function symDif (newArr){
-      
+     
       //holding obj
       var obj ={};
-
+ 
       //looop through array that holds all elements and ... do magic?
       //object can hold only one property with the same name, so if we encounter the same
       //property name, we will overrite the associate value to a DUPLICATE - awesome!
@@ -178,27 +171,60 @@ function sym(args) {
         var d = newArr[j];
         //NOT GOOD ENOUGH, if single array has duplicate entries, and another doesn't have that number, it will
         //still register as dupli, and that's not the case in symmetric difference!
+        //thats why we removed all duplicates in line 21/22/23 (from each individual array)
         obj[d] = obj[d] ? "dup" : "notdup";
       }
-
+ 
       //create and assign array of obj keys
       var t = Object.keys(obj);
-
+ 
       //filter through obj keys returning only non duplicates
       arr = t.filter(function(key){
-
+ 
         return obj[key] == "notdup";
-
+ 
       });
-      
-    arr.map(function(x){
-      return x*1;
-    });
+     
+      //because we passed values through objects, they returned as strings
+      //we multiply items by 1 to convert them to numbers again ( js does it for us bo coercing the values)
+      return arr.map(function(x){
+        return x * 1;
+      });
   }
+  
+  //final function
+  //it adds nested arrays to each other, and passes them through the function that removes duplicates
+  var t = arr.reduce(function(x,y){
+     //combine 'first' array with the 'second' one
+      var f = x.concat(y);
+     //pass it to the function, return the result 
+     //the returned result becomes 'x' and it gets concateded with the next array...
+      return symDif(f);
+   
+  });
+  //win, get beer
+  return  t;
+ 
+}
+sym([3, 3, 3, 2, 5], [2, 1, 5, 7], [3, 4, 6, 6], [1, 2, 3]);
+
+// -------------------  4 ----- Return change
+
+function checkCashRegister(price, cash, cid) {
+  //penny = 0.01
+  //nickel = 0.05
+  //dime = 0.1
+  //quarter = 0.25
+ 
+  var change;
  
   
+  
+  
+  
+  return change;
 }
  
-sym([3, 3, 3, 2, 5], [2, 1, 5, 7], [3, 4, 6, 6], [1, 2, 3]);
-// -------------------  4 ----- 
+ 
+checkCashRegister(19.50, 20.00, [["PENNY", 1.01], ["NICKEL", 2.05], ["DIME", 3.10], ["QUARTER", 4.25], ["ONE", 90.00], ["FIVE", 55.00], ["TEN", 20.00], ["TWENTY", 60.00], ["ONE HUNDRED", 100.00]]);
 // -------------------  5 ----- 
