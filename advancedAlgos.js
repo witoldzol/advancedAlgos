@@ -208,23 +208,93 @@ function sym(args) {
 }
 sym([3, 3, 3, 2, 5], [2, 1, 5, 7], [3, 4, 6, 6], [1, 2, 3]);
 
-// -------------------  4 ----- Return change
-
+// -------------------  4 ----- Return change 
+ 
 function checkCashRegister(price, cash, cid) {
   //penny = 0.01
   //nickel = 0.05
   //dime = 0.1
   //quarter = 0.25
  
-  var change;
+  
+  
+  var penny = cid[0][1];
+  var nickel = cid[1][1];
+  var dime = cid[2][1];
+  var quarter = cid[3][1];
+  var one = cid[4][1];
+  var five = cid[5][1];
+  var ten = cid[6][1];
+  var twenty = cid [7][1];
+  var hundred = cid[8][1];
+ 
+  var cashRegister = 0;
+  
+  //holding object
+  var obj = {};
+  
+  //let's loop through array and push keys:values into holding object
+  for(i=0; i<cid.length; i++){
+    
+    obj[cid[i][0]] = cid[i][1];
+    
+  }
+  
+  
+  /*
+  if 100 >0, & 100 - money paid == positive integer 
+  {
+    lower 100 count by 1
+    lower change by 100
+    push hundred:1 into holding array & if already one there increment by +1
+    
+      if remaining 100 > 0 && if change - 100 == positive integer 
+        lower 100 count by 1
+        lower change by 100
+        increment hundred:1 by +1
+        ...
+      
+    iterate again
+    if no 100 left or no % 0,
+    go down a notch
+  }
+  
+  if 20> 0 & pric / remaining change % 0
+  */
+  
+  
+  return Object.values(obj);
+  
+  
+  
+  for(i=0; i<cid.length; i++){
+    cashRegister = cashRegister + cid[i][1];
+  }
+ 
+  //this is a trick to round the number up to second decimal place
+  var c = (cashRegister * 100) /100;
+  //total change for the customer
+  var d = cash-price;
+ 
+  
+  //I NEED A WAY TO INCREMENT ? VALUES IN SUB ARRAYS AND RETURN THEM
+ 
+  if(hundred !== 0 && d/100 % 0){
+     var p = d/100;
+     return
+  }
+ 
+  
+  
+  //check if change is divisable( % 0) by available funds?
  
   
   
   
-  
-  return change;
 }
  
  
-checkCashRegister(19.50, 20.00, [["PENNY", 1.01], ["NICKEL", 2.05], ["DIME", 3.10], ["QUARTER", 4.25], ["ONE", 90.00], ["FIVE", 55.00], ["TEN", 20.00], ["TWENTY", 60.00], ["ONE HUNDRED", 100.00]]);
+checkCashRegister(19.50, 20.00, [["PENNY", 0.01], ["NICKEL", 0], ["DIME", 0], ["QUARTER", 0], ["ONE", 1.00], ["FIVE", 0], ["TEN", 0], ["TWENTY", 0], ["ONE HUNDRED", 0]]);
+
+
 // -------------------  5 ----- 
