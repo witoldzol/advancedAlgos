@@ -209,24 +209,22 @@ function sym(args) {
 sym([3, 3, 3, 2, 5], [2, 1, 5, 7], [3, 4, 6, 6], [1, 2, 3]);
 
 // -------------------  4 ----- Return change 
- 
+  
 function checkCashRegister(price, cash, cid) {
-  //penny = 0.01
-  //nickel = 0.05
-  //dime = 0.1
-  //quarter = 0.25
+  
  
   
+  var denominations = [0.01,0.05,0.1,0.25,1,5,10,20,100];
   
-  var penny = cid[0][1];
-  var nickel = cid[1][1];
-  var dime = cid[2][1];
-  var quarter = cid[3][1];
-  var one = cid[4][1];
-  var five = cid[5][1];
-  var ten = cid[6][1];
-  var twenty = cid [7][1];
-  var hundred = cid[8][1];
+  var b = denominations.reverse();
+  
+  
+  //rounding function obtained from Stack Overflow
+  //http://stackoverflow.com/questions/20701029/rounding-issue-in-math-round-tofixed
+  function roundNum(num, length) { 
+    var number = Math.round(num * Math.pow(10, length)) / Math.pow(10, length);
+    return number;
+  }
  
   var cashRegister = 0;
   
@@ -239,62 +237,70 @@ function checkCashRegister(price, cash, cid) {
     obj[cid[i][0]] = cid[i][1];
     
   }
-  
-  
-  /*
-  if 100 >0, & 100 - money paid == positive integer 
-  {
-    lower 100 count by 1
-    lower change by 100
-    push hundred:1 into holding array & if already one there increment by +1
-    
-      if remaining 100 > 0 && if change - 100 == positive integer 
-        lower 100 count by 1
-        lower change by 100
-        increment hundred:1 by +1
-        ...
-      
-    iterate again
-    if no 100 left or no % 0,
-    go down a notch
-  }
-  
-  if 20> 0 & pric / remaining change % 0
-  */
-  
-  
-  return Object.values(obj);
-  
-  
-  
+  //loop through original array and add up all values
   for(i=0; i<cid.length; i++){
     cashRegister = cashRegister + cid[i][1];
   }
- 
+  
+  //var c is a total cash we have in register
   //this is a trick to round the number up to second decimal place
   var c = (cashRegister * 100) /100;
+  
+  
+  //first test to see if we have enough funds 
+  //(there is another case, where we have funds, but we cannot give change ex. give 0.5 back but have   //only 1 dollar bill) - we will deal with this later
+  
+  
+  //array of values of the cash we have in register
+  var v = Object.values(obj).reverse();
+  var k = Object.keys(obj).reverse();
+  var arr = [];
   //total change for the customer
   var d = cash-price;
- 
+   
   
-  //I NEED A WAY TO INCREMENT ? VALUES IN SUB ARRAYS AND RETURN THEM
- 
-  if(hundred !== 0 && d/100 % 0){
-     var p = d/100;
-     return
+  
+  for(i=0; i<v.length; i++){
+    //how many times we need to iterate to exhaust given 'bill'
+    var n = v[i]/b[i];
+    var sum = 0;
+    var counter = 0;
+      //if we have at least one bill, and change - that bill is higher than zero(ie. bill will not           //overkill the change required, we can run the loop)
+      if(n>0 && d-b[i]>0){
+        //nested loop
+        for(j=0; j<n; j++){
+          
+          
+          //we need to fix this
+          counter++;
+          console.log(b[i]);
+          console.log(counter);
+          sum = roundNum(sum + b[i], 2);
+
+
+          if(sum === d && c === d){
+            return "Closed";
+          }
+          else if(sum === d){
+            return arr;
+          } 
+        }
+
+        if(counter !== 0){
+          arr.push([k[i],v[i]*counter]);
+        }
+      }
+    
   }
- 
+  return arr;
+  return "Insufficient Funds";
   
-  
-  //check if change is divisable( % 0) by available funds?
- 
-  
+
   
   
 }
  
  
-checkCashRegister(19.50, 20.00, [["PENNY", 0.01], ["NICKEL", 0], ["DIME", 0], ["QUARTER", 0], ["ONE", 1.00], ["FIVE", 0], ["TEN", 0], ["TWENTY", 0], ["ONE HUNDRED", 0]]);
-
+checkCashRegister(3.26, 100.00, [["PENNY", 1.01], ["NICKEL", 2.05], ["DIME", 3.10], ["QUARTER", 4.25], ["ONE", 90.00], ["FIVE", 55.00], ["TEN", 20.00], ["TWENTY", 60.00], ["ONE HUNDRED", 100.00]]);
 
 // -------------------  5 ----- 
