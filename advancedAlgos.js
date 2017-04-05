@@ -209,16 +209,17 @@ function sym(args) {
 sym([3, 3, 3, 2, 5], [2, 1, 5, 7], [3, 4, 6, 6], [1, 2, 3]);
 
 // -------------------  4 ----- Return change 
-  
+   
 function checkCashRegister(price, cash, cid) {
   
  
-  
+  //array of values in order they appear 
   var denominations = [0.01,0.05,0.1,0.25,1,5,10,20,100];
-  
+  //same as above, but reversed - we reverse, because our logic will work from 
+  //highest bills, to lowest (take change - 100, if still left some change, - 20 etc...working down)
   var b = denominations.reverse();
   
-  
+  //ROUNDING IS A CONSTANT ISSUE, pretty much apply below function to each number to avoid surprises
   //rounding function obtained from Stack Overflow
   //http://stackoverflow.com/questions/20701029/rounding-issue-in-math-round-tofixed
   function roundNum(num, length) { 
@@ -247,60 +248,154 @@ function checkCashRegister(price, cash, cid) {
   var c = (cashRegister * 100) /100;
   
   
-  //first test to see if we have enough funds 
-  //(there is another case, where we have funds, but we cannot give change ex. give 0.5 back but have   //only 1 dollar bill) - we will deal with this later
-  
-  
   //array of values of the cash we have in register
   var v = Object.values(obj).reverse();
+  //array of keys
   var k = Object.keys(obj).reverse();
   var arr = [];
   //total change for the customer
   var d = cash-price;
-   
+  //we duplicate this variable, because we want to look up original value later on
+  var d2 = cash-price; 
+  //temporary variable to keep track of what we accumulated so far ( we aim for sum to reach equality with   //required change)
   
   
+  
+  //outside loop, goes through each denomination
   for(i=0; i<v.length; i++){
-    //how many times we need to iterate to exhaust given 'bill'
+    
+    //lets calculate how many times we need to iterate to exhaust given 'bill'
     var n = v[i]/b[i];
-    var sum = 0;
+    //variable to count how many times we used given bill/denomination
     var counter = 0;
-      //if we have at least one bill, and change - that bill is higher than zero(ie. bill will not           //overkill the change required, we can run the loop)
-      if(n>0 && d-b[i]>0){
-        //nested loop
+      
+        //nested loop, goes through the same denomination until it's exhausted or conditions are met
+        //ex. our change == our combined sum of paid out monies
         for(j=0; j<n; j++){
           
-          
-          //we need to fix this
-          counter++;
-          console.log(b[i]);
-          console.log(counter);
-          sum = roundNum(sum + b[i], 2);
+            //internal condition, we check if applying given bill will not 'overkill' change
+            //ex. we need to give $15 back, so we test for first $100, 15-100 = negative, so we break loop
+            //and go to one step lower denomination (20)...and so on 
+            if(roundNum(d-b[i],2) >= 0){
+              
+                //var d keeps track of the change that is left to be given (we keep substracting from it)
+                d = roundNum(d-b[i],2);
+                
+                //increment counter by one each time we loop through given denomination/bill
+                counter++;
+                
+                //first condition, if change to give reaches zero AND our total change == our total cash
+                //in register, we can CLOSE register 
+                if(d === 0 && c === d2){
+                  return "Closed";
+                }
+                //second condition, change gets to zero, we still have monies left in register
+                else if(d === 0){
+                  //we push in case we meet the criterium before loop ends executing completely
+                  arr.push([k[i],((b[i]*counter).toFixed(2))*1]);
+                  return arr;
+                } 
+            }
+            //break loop if we overkill change with current denomination
+            else {
+              break;
+            }
 
-
-          if(sum === d && c === d){
-            return "Closed";
-          }
-          else if(sum === d){
-            return arr;
-          } 
         }
-
+        //if nested loop exhausts all available bills, push them to holding array, and move on 
         if(counter !== 0){
-          arr.push([k[i],v[i]*counter]);
+          //toFixed(2) will force display of two decimal places 
+          //we multiply by 1 in order to coerce strings to numbers (old trick at this stage)
+          arr.push([k[i],((b[i]*counter).toFixed(2))*1]);
         }
-      }
-    
+   
   }
-  return arr;
-  return "Insufficient Funds";
+  //if we didn't any of the previous conditions, we either have insufficient monies OR
+  //our we can't give out exact change because we lack certain bills/coins
+  return "Insufficient Funds"; 
   
-
-  
-  
+  //get beer!
 }
  
  
 checkCashRegister(3.26, 100.00, [["PENNY", 1.01], ["NICKEL", 2.05], ["DIME", 3.10], ["QUARTER", 4.25], ["ONE", 90.00], ["FIVE", 55.00], ["TEN", 20.00], ["TWENTY", 60.00], ["ONE HUNDRED", 100.00]]);
 
-// -------------------  5 ----- 
+// -------------------  5 ----- compare 2D arrays, add new items, sort alphabetiacally
+
+
+function updateInventory(arr1, arr2) {
+    
+  
+    //outer loop
+    for(i=0; i<arr2.length; i++){
+        //temporary var that resets with iteration of outer loop
+        var state = "";
+        
+        for(j=0; j<arr1.length; j++){
+            
+            //if we have matched an item in new delivery
+            if(arr2[i][1]==arr1[j][1]){
+              //add to quantity
+              arr1[j][0] = arr1[j][0] + arr2[i][0];
+              //set temp var to 'found'
+              state = "found";
+            } 
+          
+        }
+        //if state is not equal to 'found' we know that we have a new item, and we push it into array
+        if(state !== "found"){
+          arr1.push(arr2[i]);
+        }
+    }
+  
+    //finally, sort alphabetically 
+    return arr1.sort(function(a,b){
+        //get beer!
+        return a[1]>b[1];
+    });
+}
+
+// Example inventory lists
+var curInv = [
+    [21, "Bowling Ball"],
+    [2, "Dirty Sock"],
+    [1, "Hair Pin"],
+    [5, "Microphone"]
+];
+
+var newInv = [
+    [2, "Hair Pin"],
+    [3, "Half-Eaten Apple"],
+    [67, "Bowling Ball"],
+    [7, "Toothpaste"]
+];
+
+updateInventory(curInv, newInv);
+
+// -------------------  6 ----- repeats
+
+
+function permAlone(str) {
+  
+  
+  var l = str.length;
+  
+  function factorial (x){
+    if(x === 0){
+      return 1;
+    }
+    return x * factorial(x-1);
+  }
+  
+  
+  
+  
+  
+  return factorial(l) - factorial(l-1);
+  
+  
+}
+
+permAlone('abfdefa');
+
+// -------------------  7 ----- 
