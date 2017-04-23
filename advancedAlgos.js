@@ -375,44 +375,129 @@ updateInventory(curInv, newInv);
 // -------------------  6 ----- repeats
 
 
+// SLOW VERSION //
+
 function permAlone(str) {
   
+  let results = [];
+  let arr = str.split('');
+  let temp = [];
   
-  var l = str.length;
-  
-  function factorial (x){
-    if(x === 0){
-      return 1;
+  function permute(arr){
+    
+    let firstChar;
+    
+    for(let i=0; i<arr.length; i++){
+      
+      firstChar = arr.splice(i,1);
+      
+      temp.push(firstChar[0]);
+      
+      if(arr.length === 0){
+        results.push(temp.join(''));
+      }
+      
+      permute(arr);
+      
+      arr.splice(i,0,firstChar);
+      temp.pop();
+      
     }
-    return x * factorial(x-1);
+    
+    return results; 
+    
   }
   
+  permute(arr);
   
   
   
+  const key = /(\w)\1+/;
   
-  return factorial(l) - factorial(l-1);
   
+  let final = results.filter(function(x){
+    
+    if(x.match(key)){
+      return false;
+    } else {
+      return true;
+    }
+    
+  });
+    
+  return final.length;
+  
+  /*
+  for (let j=0; results.length; j++){
+    
+    if(!results[j].match(filter)){
+       
+    }
+    
+  }
+  
+  */
   
 }
 
-permAlone('abfdefa');
+permAlone('abcdefa');
 
-// -------------------  7 -----  Recursive function that generates permutations of a string
+
+// HEAP'S ALGORITHM AKA FAAAAAST VERSION //
+
+
+
 
 function permAlone(str) {
+ let permutations = []; 
+  
+ function per(str) 
+{ 
+  var arr = str.split('');
+    
+
+  function swap(a, b)
+  {
+    var tmp = arr[a];
+    arr[a] = arr[b];
+    arr[b] = tmp;
+  }
+
+  function generate(n) {
+    if (n == 1) {
+      permutations.push(arr.join(''));
+    } else {
+      for (var i = 0; i != n; ++i) {
+        generate(n - 1);
+        swap(n % 2 ? 0 : i, n - 1);
+      }
+    }
+  }
+
+  generate(arr.length);
+  
+  return permutations;
+}    
+
+ per(str); 
  
+  const key = /(\w)\1+/;
   
   
-  
- var m = str.match(/(\w)\1+/); 
- 
+  let final = permutations.filter(function(x){
+    
+    if(x.match(key)){
+      return false;
+    } else {
+      return true;
+    }
+    
+  });
+    
+  return final.length;
   
   
 }
 
-permAlone('abcd');
-
-} 
 permAlone('aab');
 
