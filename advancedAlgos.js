@@ -372,7 +372,7 @@ var newInv = [
 
 updateInventory(curInv, newInv);
 
-// -------------------  6 ----- repeats
+// -------------------  6 ----- PERMUTATIONS ALGORITHM
 
 
 // SLOW VERSION //
@@ -427,17 +427,6 @@ function permAlone(str) {
     
   return final.length;
   
-  /*
-  for (let j=0; results.length; j++){
-    
-    if(!results[j].match(filter)){
-       
-    }
-    
-  }
-  
-  */
-  
 }
 
 permAlone('abcdefa');
@@ -445,59 +434,62 @@ permAlone('abcdefa');
 
 // HEAP'S ALGORITHM AKA FAAAAAST VERSION //
 
-
-
-
 function permAlone(str) {
- let permutations = []; 
   
- function per(str) 
-{ 
-  var arr = str.split('');
+  //this is javascript implementation of the Heap's algorithm
+  //more info @ http://www.geeksforgeeks.org/heaps-algorithm-for-generating-permutations/
+  
+  
+  let solution = []; // our holding array
+  
+  function outer (input){ //wrapper function
     
-
-  function swap(a, b)
-  {
-    var tmp = arr[a];
-    arr[a] = arr[b];
-    arr[b] = tmp;
-  }
-
-  function generate(n) {
-    if (n == 1) {
-      permutations.push(arr.join(''));
-    } else {
-      for (var i = 0; i != n; ++i) {
-        generate(n - 1);
-        swap(n % 2 ? 0 : i, n - 1);
+      let arr = input.split('');  // we make array out of passed in string
+    
+      function swap(x,y){    // simple function that swaps items in array
+        let temp = arr[x];
+        arr[x] = arr[y];
+        arr[y] = temp;
+        
+      }  
+      
+      function permute(n){    // actual function that generates permutations
+        
+          for(let i = 0; i != n; i++){    //loop
+              
+              if(n == 1){                //this is our base condition to prevent infinite permutations
+                solution.push(arr.join(''));  //we push in strings into our holding array using .('join')
+              }
+              else{                      
+                permute(n-1);            //our recursive call that has progressively shorter 'n'(length of argument)
+                if(n % 2){swap(0,n-1);}else{swap(i,n-1);}    //if 'n' is even we swap first with last item, otherwise 'i' & last
+                                                              
+              }
+          }  
       }
-    }
-  }
-
-  generate(arr.length);
+      permute(arr.length); //actuall call to function where we pass in length of original array that we created earlier
+    
+  } 
   
-  return permutations;
-}    
-
- per(str); 
- 
-  const key = /(\w)\1+/;
+  outer(str);  // call to wrapper function that start the whole thing
   
+  const key = /(\w)\1+/;  //our regex key that matches any letters that appear 2+ in a row
   
-  let final = permutations.filter(function(x){
+  let final = solution.filter(function(x){  //using higher order function to filer out elements that match our key
     
     if(x.match(key)){
-      return false;
+      return false;    //if we have a match, we return 'false', so this element gets filtered out 
     } else {
-      return true;
+      return true;      //we are left only with strings that have no repeating letters
     }
     
   });
     
-  return final.length;
-  
+  return final.length;  //we return number using .length as per requirements
+                        //get vodka...this algo too me forever to understand
   
 }
 
 permAlone('aab');
+
 

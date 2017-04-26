@@ -131,15 +131,16 @@
 			"file": "advancedAlgos.js",
 			"settings":
 			{
-				"buffer_size": 68,
+				"buffer_size": 12950,
+				"encoding": "UTF-8",
 				"line_ending": "Unix"
 			}
 		},
 		{
-			"file": "/Users/eldrad/Desktop/Git/100-days-of-code/log60",
+			"file": "/Users/eldrad/Desktop/Git/100-days-of-code/log90",
 			"settings":
 			{
-				"buffer_size": 11321,
+				"buffer_size": 15636,
 				"encoding": "UTF-8",
 				"line_ending": "Unix"
 			}
@@ -189,6 +190,9 @@
 	},
 	"file_history":
 	[
+		"/Users/eldrad/Desktop/Git/100-days-of-code/======== PROCRACTINATION BUSTER TEMPLATE ========",
+		"/Users/eldrad/Desktop/Git/100-days-of-code/log60",
+		"/Users/eldrad/Desktop/Git/ahk/readme.md",
 		"/Users/eldrad/Desktop/Git/intermed. algorithms/interAlgo.js",
 		"/Users/eldrad/Desktop/Git/advanced algorithms/advanced_algo.js",
 		"/Users/eldrad/Desktop/Git/100-days-of-code/log90.md",
@@ -242,6 +246,31 @@
 		"case_sensitive": false,
 		"find_history":
 		[
+			"Friday",
+			"Wednesday",
+			"Tuesday",
+			"Sunday",
+			"Friday",
+			"Thursday",
+			"Wednesday",
+			"Tuesday",
+			"Sunday",
+			"Saturday",
+			"Friday",
+			"Thursday",
+			"Wednesday",
+			"Tuesday",
+			"\t\n",
+			"Monday",
+			"Sunday",
+			"Saturday",
+			"Thursday",
+			"Wednesday",
+			"Tuesday",
+			"Monday",
+			"Sunday",
+			"Tuesday",
+			"Monday",
 			"Friday",
 			"Wednesday",
 			"Monday",
@@ -323,7 +352,7 @@
 	"groups":
 	[
 		{
-			"selected": 1,
+			"selected": 0,
 			"sheets":
 			[
 				{
@@ -332,15 +361,15 @@
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 68,
+						"buffer_size": 12950,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								68,
-								68
+								12338,
+								12338
 							]
 						],
 						"settings":
@@ -348,27 +377,27 @@
 							"syntax": "Packages/JavaScript/JavaScript.sublime-syntax"
 						},
 						"translation.x": 0.0,
-						"translation.y": 0.0,
+						"translation.y": 6482.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 1,
+					"stack_index": 0,
 					"type": "text"
 				},
 				{
 					"buffer": 1,
-					"file": "/Users/eldrad/Desktop/Git/100-days-of-code/log60",
+					"file": "/Users/eldrad/Desktop/Git/100-days-of-code/log90",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 11321,
+						"buffer_size": 15636,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								8978,
-								8978
+								15566,
+								15566
 							]
 						],
 						"settings":
@@ -376,10 +405,10 @@
 							"syntax": "Packages/Markdown/Markdown.sublime-syntax"
 						},
 						"translation.x": 0.0,
-						"translation.y": 2203.0,
+						"translation.y": 3148.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 0,
+					"stack_index": 1,
 					"type": "text"
 				}
 			]
