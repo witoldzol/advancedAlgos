@@ -493,3 +493,30 @@ function permAlone(str) {
 permAlone('aab');
 
 
+
+// -------------------  7 ----- Constructors
+
+var Person = function(firstAndLast) {
+  
+  const key = /\w+/; 
+  
+  function getFirstName(){
+    let first = this.match(key).toString();
+    return first;
+    
+  }
+  
+  
+  
+  
+  
+    return firstAndLast;
+};
+
+
+Person('bob jay');
+
+var bob = new Person('Bob Ross');
+
+
+bob.getFirstName();
