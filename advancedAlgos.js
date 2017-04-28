@@ -496,27 +496,31 @@ permAlone('aab');
 
 // -------------------  7 ----- Constructors
 
-var Person = function(firstAndLast) {
-  
-  const key = /\w+/; 
-  
-  function getFirstName(){
-    let first = this.match(key).toString();
-    return first;
+ 
+var Person = function  (input) {
+ 
+    const firstKey = /\w+/;      //regular expression that matches first word(until it gets to special char, like space)
+    const lastKey = /\w+$/;      // regex that matches letters (word) that has an ending of input (so it will omit first word)
+   
     
-  }
-  
-  
-  
-  
-  
-    return firstAndLast;
+    let first = input.match(firstKey).toString();    //we match first word from imput and convert it to string
+    let last = input.match(lastKey).toString();
+   
+    
+    this.getFirstName = () => first;    //recall first name
+    this.getLastName = () => last;      //recall last name
+    this.getFullName = () => first +' '+last;      // I couldn't get the whole input working (it wouldn't update using 'set'       method), so I decided to use a combination of first two variables
+ 
+    this.setFirstName = (x) => first = x;    //set first name
+    this.setLastName = (y) => last = y;      //set second
+    //again, I tried .setFullName = () => full = z, but that didn't update, so I decided to use match and combine results
+    this.setFullName = (z) => {first = z.match(firstKey).toString(); last = z.match(lastKey).toString();};
+    
 };
-
-
-Person('bob jay');
-
+ 
 var bob = new Person('Bob Ross');
+ 
+//get beer
+bob.getFullName();
 
-
-bob.getFirstName();
+// ------------------- 8 ----------
