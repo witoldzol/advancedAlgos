@@ -523,4 +523,84 @@ var bob = new Person('Bob Ross');
 //get beer
 bob.getFullName();
 
+
 // ------------------- 8 ----------
+ 
+function orbitalPeriod(arr) {
+  //constant values
+  const GM = 398600.4418;
+  const earthRadius = 6367.4447;
+ 
+  // lets define constructor function, that will calculate values for each object/argument passed in/ in the loop  
+  function getPeriod(arr, i){
+    // average altitude
+    let alt = arr[i].avgAlt;
+    // avg altitude plus earth radius
+    let radAndAlt = alt + earthRadius;
+    //we use formula provided in wiki page @ https://en.wikipedia.org/wiki/Orbital_period
+    // we define all elements from the formula
+    let a = Math.pow(radAndAlt,3);
+   
+    let pi = 4*Math.pow(Math.PI,2);
+ 
+    let t = Math.round(Math.pow(a*pi/GM, 1/2));
+    //we define name for each new object
+    this.name = arr[i].name;
+    //calculate orbital period for each new object
+    this.orbitalPeriod = t;
+  }
+  // holding array
+  let tmp = [];
+  //loop that iterates over arguments(or more precisely, elements in array of first argument)
+  for(let i = 0; i<arguments[0].length; ++i){
+    //temporary holding object that clears on each iteration
+    let x ={};
+    //create new object
+    x = new getPeriod(arr, i);
+    //push it into holding array
+    tmp.push(x);
+  }
+  //return results, get beer
+  return tmp;
+}
+ 
+orbitalPeriod([{name: "iss", avgAlt: 413.6}, {name: "hubble", avgAlt: 556.7}, {name: "moon", avgAlt: 378632.553}]);
+
+
+// -------------------  9 ----- 
+ 
+function pairwise(arr, arg) {
+ 
+  let temp =[];
+ 
+  
+  function pair(x, i){
+  
+    x.reduce(function(a,b){
+       
+      if(a+b == 7){
+       
+        temp.push([a,b]);
+      }
+       
+    },x[i]);
+   
+  }
+            
+  
+  for(let i =0; i<arr.length; ++i){
+   
+    pair(arr, i);
+   
+    
+  }
+ 
+  
+  
+  
+  return temp;
+}
+ 
+pairwise([1,4,2,3,0,5], 7);
+// -------------------  10 ----- 
+
