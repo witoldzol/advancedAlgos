@@ -604,3 +604,31 @@ function pairwise(arr, arg) {
 pairwise([1,4,2,3,0,5], 7);
 // -------------------  10 ----- 
 
+
+function pairwise(arr, arg) {
+  
+  
+  let temp =[];
+  
+  function check(i){ 
+        
+        arr.reduce(function(acc, current, currentIndex){
+
+            if(acc + current === 7){
+              temp.push([acc,current]);
+              return;
+            } else {
+              return acc;
+            } 
+
+
+        },arr[i]);
+
+  }
+  
+  for(let i=0; i<arr.length; ++i){
+    
+    check(i);
+    
+  }
+
