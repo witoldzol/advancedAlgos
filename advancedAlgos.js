@@ -604,18 +604,28 @@ function pairwise(arr, arg) {
 pairwise([1,4,2,3,0,5], 7);
 // -------------------  10 ----- 
 
-
 function pairwise(arr, arg) {
-  
   
   let temp =[];
   
   function check(i){ 
         
-        arr.reduce(function(acc, current, currentIndex){
-
-            if(acc + current === 7){
-              temp.push([acc,current]);
+        arr.reduce(function(acc, current){
+            //remove (replace) the initial starting value
+            let start = arr.indexOf(arr[i]);
+            arr.splice(start,1, "NaN");
+          
+            let accIndex = arr.indexOf(acc);
+            let curIndex = arr.indexOf(current);
+          
+            if(acc + current === arg){
+              temp.push(accIndex , curIndex);
+              //temp.push([acc,current]);
+              //we remove the used numbers...and replace them with placeholder (NaN)-- 
+              //without placeholder remaining number's indexes would change!
+              arr.splice(accIndex,1,NaN);
+              arr.splice(curIndex,1,NaN);
+              //i think we need to put back the value we took off at the begining ... to be sorted.
               return;
             } else {
               return acc;
@@ -627,8 +637,9 @@ function pairwise(arr, arg) {
   }
   
   for(let i=0; i<arr.length; ++i){
-    
     check(i);
-    
   }
-
+  return temp;
+  //return temp.reduce( (a,b) => a+b );
+}
+pairwise([1, 3, 2, 4], 4);
