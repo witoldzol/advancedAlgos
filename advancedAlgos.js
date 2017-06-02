@@ -568,80 +568,66 @@ orbitalPeriod([{name: "iss", avgAlt: 413.6}, {name: "hubble", avgAlt: 556.7}, {n
 
 
 // -------------------  9 ----- 
- 
-function pairwise(arr, arg) {
- 
-  let temp =[];
- 
-  
-  function pair(x, i){
-  
-    x.reduce(function(a,b){
-       
-      if(a+b == 7){
-       
-        temp.push([a,b]);
-      }
-       
-    },x[i]);
-   
-  }
-            
-  
-  for(let i =0; i<arr.length; ++i){
-   
-    pair(arr, i);
-   
     
-  }
- 
-  
-  
-  
-  return temp;
-}
- 
-pairwise([1,4,2,3,0,5], 7);
-// -------------------  10 ----- 
-
 function pairwise(arr, arg) {
-  
   let temp =[];
+  let results=[];
   
   function check(i){ 
         
-    
-       
-        arr.reduce(function(acc, current, i){
-            
-            let accIndex = arr.indexOf(acc);
+        arr.reduce(function(acc, current){
+            //if we have a match, stop looking for this iteration (just return acc, there is no way to break reduce() )    
+            if(temp.length > 0){
+              return acc;
+            }  
+          
+            let accIndex = arr.indexOf(arr[i]);
             let curIndex = arr.indexOf(current);
             
-            if(acc + current === arg){
+            
+            if(curIndex === arr.indexOf(arr[i])){ 
+               return acc;
+               }
+            
+            if(arr[i] + current === arg){
+              
+              
               temp.push(accIndex + curIndex);
               //temp.push([acc,current]);
+              
               //we remove the used numbers...and replace them with placeholder (NaN)-- 
               //without placeholder remaining number's indexes would change!
               arr.splice(accIndex,1,NaN);
               arr.splice(curIndex,1,NaN);
-              //i think we need to put back the value we took off at the begining ... to be sorted.
-              
+              console.log(arr);
+              //we need a way to stop insertions after first match for given loop has been found
               
               return;
             } else {
               return acc;
             } 
-
-
-        });
+        
+        
+        },arr[i]);
 
   }
   
   for(let i=0; i<arr.length; ++i){
     check(i);
+    
+    //if(temp.length>1){
+      results.push(temp);  
+    //}
+  
+    temp =[];
   }
-  return temp;
+  return results;
+  //flatten and reduce to one number
+  //return results.reduce( (a,b) => a.concat(b)).reduce( (a,b) => a+b );
+  //if(temp.length <1){return temp;};
   //return temp.reduce( (a,b) => a+b );
+ 
 }
-pairwise([1, 3, 2, 4], 4);
+pairwise([1, 1, 1], 2);
+
 
