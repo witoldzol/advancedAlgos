@@ -567,67 +567,67 @@ function orbitalPeriod(arr) {
 orbitalPeriod([{name: "iss", avgAlt: 413.6}, {name: "hubble", avgAlt: 556.7}, {name: "moon", avgAlt: 378632.553}]);
 
 
-// -------------------  9 ----- 
-    
+// -------------------  9 ----- return lowest possible sum of indexes 
+       
 function pairwise(arr, arg) {
   let temp =[];
   let results=[];
   
+  //base condition, if there are less then 2 items return 0 
+  if (arr.length <2) return 0;
+  
+  //we pass i from  loop to our function
   function check(i){ 
         
         arr.reduce(function(acc, current){
-            //if we have a match, stop looking for this iteration (just return acc, there is no way to break reduce() )    
+            //if we have a match, stop looking for this iteration (just return acc, there is no way to break reduce() )  
+            //we don't look for further matches, because first match will be most likely lowest combined index
             if(temp.length > 0){
               return acc;
             }  
-          
-            let accIndex = arr.indexOf(arr[i]);
+            //we use index of i item from array instead of accumulator and match it against remaining items 
+            let accIndex = i;
             let curIndex = arr.indexOf(current);
             
-            
-            if(curIndex === arr.indexOf(arr[i])){ 
+            //we don't want to match our i item with the same item from array
+            //I tried deleting it, replacing...it created more issues than it solved
+            if(curIndex === i){ 
                return acc;
                }
             
             if(arr[i] + current === arg){
               
-              
               temp.push(accIndex + curIndex);
-              //temp.push([acc,current]);
               
               //we remove the used numbers...and replace them with placeholder (NaN)-- 
               //without placeholder remaining number's indexes would change!
               arr.splice(accIndex,1,NaN);
               arr.splice(curIndex,1,NaN);
-              console.log(arr);
-              //we need a way to stop insertions after first match for given loop has been found
               
               return;
+              
             } else {
+              //if no match just return acc
               return acc;
             } 
         
-        
+        //our starting value
         },arr[i]);
 
   }
   
   for(let i=0; i<arr.length; ++i){
+    
     check(i);
     
-    //if(temp.length>1){
-      results.push(temp);  
-    //}
-  
+    results.push(temp);  
+    //clear temporary array after each iteration
     temp =[];
   }
-  return results;
-  //flatten and reduce to one number
-  //return results.reduce( (a,b) => a.concat(b)).reduce( (a,b) => a+b );
-  //if(temp.length <1){return temp;};
-  //return temp.reduce( (a,b) => a+b );
- 
+  /
+  //flatten and reduce to one number our results (arrow functions FTW!!!)
+  return results.reduce( (a,b) => a.concat(b)).reduce( (a,b) => a+b );
+  
 }
-pairwise([1, 1, 1], 2);
-
+pairwise([1, 4, 2, 3, 0, 5], 7);
 
